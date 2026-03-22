@@ -1,0 +1,16 @@
+states = ["A", "B"]
+actions = ["left", "right"]
+
+rewards = {
+    ("A", "right"): 10,
+    ("A", "left"): 0,
+    ("B", "left"): 5,
+    ("B", "right"): 2
+}
+
+def choose_best_action(state):
+    return max(actions, key=lambda a: rewards.get((state, a), 0))
+
+result = choose_best_action("A")
+print("Best action in A:", result)
+print("Reward:", rewards[("A", result)])

@@ -1,0 +1,20 @@
+grid = {
+    (0,0): 0,
+    (0,1): 1,
+    (1,0): -1,
+    (1,1): 10
+}
+
+def get_reward(state):
+    return grid.get(state, 0)
+
+current_state = (0,0)
+actions = [(0,1), (1,0)]
+
+best_action = max(actions, key=lambda a: get_reward((current_state[0]+a[0], current_state[1]+a[1])))
+
+next_state = (current_state[0]+best_action[0], current_state[1]+best_action[1])
+
+print("Best move:", best_action)
+print("Next state:", next_state)
+print("Reward:", get_reward(next_state))
